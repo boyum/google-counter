@@ -2,7 +2,7 @@
   "manifest_version": 2,
 
   "name": "Google Counter",
-  "description": "The Google Counter Extension counts how many times a day the browser visits the Google search page",
+  "description": "Counts how many times a day the browser visits the Google search page",
   "version": "0.5.0",
 
   "browser_action": {
