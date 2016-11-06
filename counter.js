@@ -16,7 +16,5 @@ if (url && url.includes('google') && url.includes('search')) {
 }
 
 function sendMessage(message) {
-  chrome.runtime.sendMessage({count: message}, function(response) {
-
-  });
+  chrome.runtime.sendMessage({count: message}, function() {});
 }
