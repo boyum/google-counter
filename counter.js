@@ -10,5 +10,13 @@ if (url && url.includes('google') && url.includes('search')) {
     chrome.storage.sync.set({
       'sb-google-count': count
     }, function () {});
+
+    sendMessage(count);
+  });
+}
+
+function sendMessage(message) {
+  chrome.runtime.sendMessage({count: message}, function(response) {
+
   });
 }
