@@ -8,4 +8,5 @@ To install the extension, go to the [Chrome Web Store](https://chrome.google.com
 
 ### License
 Apache 2.0
+
 Copyright 2016 Sindre Bøyum
