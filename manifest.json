@@ -3,7 +3,7 @@
 
   "name": "Google Counter",
   "description": "Counts how many times a day the browser visits the Google search page",
-  "version": "1.0.1",
+  "version": "1.1.0",
 
   "browser_action": {
     "default_icon": "icon.png",
@@ -28,7 +28,8 @@
       "include_globs": [
         "*://www.google.*/*"
       ],
-      "js": ["counter.js"]
+      "js": ["counter.js"],
+      "css": ["styles.css"]
     }
   ]
 }
