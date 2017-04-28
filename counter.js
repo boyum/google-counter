@@ -1,8 +1,8 @@
 run();
 
-function run(){
+function run() {
   var url = window.location.href;
-  if(!isGoogleSearch(url)) return;
+  if (!isGoogleSearch(url)) return;
   var count = increaseAndReturnCount();
   sendMessage(count);
   runEasterEgg(count);
@@ -12,7 +12,7 @@ function run(){
  * Checks if this url is regarded as a google search.
  * @param {string} url 
  */
-function isGoogleSearch(url){
+function isGoogleSearch(url) {
   return url && url.includes('google') && url.includes('search');
 }
 
@@ -20,7 +20,7 @@ function isGoogleSearch(url){
 /**
  * Increases chrome storage count
  */
-function increaseAndReturnCount(){
+function increaseAndReturnCount() {
   var count = 0;
   chrome.storage.sync.get('sb-google-count', function (googleCount) {
     if (googleCount['sb-google-count']) {
@@ -39,7 +39,9 @@ function increaseAndReturnCount(){
  * @param {string} message 
  */
 function sendMessage(message) {
-  chrome.runtime.sendMessage({count: message}, function() {});z
+  chrome.runtime.sendMessage({
+    count: message
+  }, function () {});
 }
 
 /**
@@ -48,7 +50,7 @@ function sendMessage(message) {
  */
 function runEasterEgg(count) {
   if (count % 100 === 0) {
-      showFireworks();    
+    showFireworks();
   }
 }
 
