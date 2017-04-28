@@ -1,5 +1,26 @@
-var url = window.location.href;
-if (url && url.includes('google') && url.includes('search')) {
+run();
+
+function run() {
+  var url = window.location.href;
+  if (!isGoogleSearch(url)) return;
+  var count = increaseAndReturnCount();
+  sendMessage(count);
+  runEasterEgg(count);
+}
+
+/**
+ * Checks if this url is regarded as a google search.
+ * @param {string} url 
+ */
+function isGoogleSearch(url) {
+  return url && url.includes('google') && url.includes('search');
+}
+
+
+/**
+ * Increases chrome storage count
+ */
+function increaseAndReturnCount() {
   var count = 0;
   chrome.storage.sync.get('sb-google-count', function (googleCount) {
     if (googleCount['sb-google-count']) {
@@ -9,10 +30,8 @@ if (url && url.includes('google') && url.includes('search')) {
     chrome.storage.sync.set({
       'sb-google-count': count
     }, function () {});
-
-    sendMessage(count);
-    runEasterEgg(count);
   });
+  return count;
 }
 
 /**
@@ -20,7 +39,9 @@ if (url && url.includes('google') && url.includes('search')) {
  * @param {string} message 
  */
 function sendMessage(message) {
-  chrome.runtime.sendMessage({count: message}, function() {});
+  chrome.runtime.sendMessage({
+    count: message
+  }, function () {});
 }
 
 /**
@@ -29,7 +50,7 @@ function sendMessage(message) {
  */
 function runEasterEgg(count) {
   if (count % 100 === 0) {
-      showFireworks();    
+    showFireworks();
   }
 }
 
